@@ -48,7 +48,7 @@ DotnetOptions = [
     "Saturn.sln",
     "-p:PublishSingleFile=true",
     "--self-contained",
-    "true",
+    "false",
 ]
 
 ## FUNCTIONS ##
