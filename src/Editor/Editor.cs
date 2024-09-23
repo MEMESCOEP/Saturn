@@ -254,7 +254,7 @@ namespace Saturn
 
                                 if (ImGui.MenuItem("Open project", "Ctrl+O"))
                                 {
-                                    EditorActions.SelectProjectFromDisk(ref ProjectName, ref ProjectConfigPath, ref ProjectConfigFile, ref CurrentScene, ref GameObjectsInScene, ref ScenesInProject);
+                                    EditorActions.SelectProjectFromDisk(ref GameObjectsInScene, ref ScenesInProject);
                                 }
 
                                 if (ImGui.MenuItem("Save project", "Ctrl+S"))
@@ -268,7 +268,7 @@ namespace Saturn
 
                                 if (ImGui.MenuItem("Open scene", "Ctrl+Shift+O") || Keyboard.IsKeyPressed(KeyboardKey.O))
                                 {
-                                    EditorActions.SelectSceneFromDisk(CurrentScene, GameObjectsInScene, ScenesInProject);
+                                    EditorActions.SelectSceneFromDisk(GameObjectsInScene, ScenesInProject);
                                 }
 
                                 if (ImGui.MenuItem("Save scene", "Ctrl+Shift+S"))
@@ -980,11 +980,11 @@ namespace Saturn
                                     {
                                         if (Keyboard.IsKeyDown(KeyboardKey.LeftShift) == true || Keyboard.IsKeyDown(KeyboardKey.RightShift) == true)
                                         {
-                                            EditorActions.SelectSceneFromDisk(CurrentScene, GameObjectsInScene, ScenesInProject);
+                                            EditorActions.SelectSceneFromDisk(GameObjectsInScene, ScenesInProject);
                                         }
                                         else
                                         {
-                                            EditorActions.SelectProjectFromDisk(ref ProjectName, ref ProjectConfigPath, ref ProjectConfigFile, ref CurrentScene, ref GameObjectsInScene, ref ScenesInProject);
+                                            EditorActions.SelectProjectFromDisk(ref GameObjectsInScene, ref ScenesInProject);
                                         }
                                     }
 
@@ -1009,7 +1009,7 @@ namespace Saturn
                                     }
                                 }
 
-                                // Choese
+                                // Wagoo wagoo cat
                                 if (Keyboard.IsKeyDown(KeyboardKey.RightShift) && Keyboard.IsKeyDown(KeyboardKey.LeftAlt) && Keyboard.IsKeyPressed(KeyboardKey.F3))
                                 {
                                     Messagebox.ShowMessage("Wagoo wagoo", "Wagoo wagoo?!11/?!!\nhttps://youtu.be/cdy_OPm6K1s?si=Durv-FuskaWHQgFZ", SDL2.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_INFORMATION);

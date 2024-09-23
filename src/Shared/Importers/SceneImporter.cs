@@ -31,7 +31,6 @@ namespace Saturn
                 ThreadedResource NewResource = new ThreadedResource();
                 NewResource.ResourceType = ThreadedResourceImporter.DataTypes.IMAGE;
                 
-                //NewGameObject.ObjectTexture = MaterialTextureImporter.LoadTextureFromFile(NewGameObject.ObjectTexturePath);
                 ThreadedResourceImporter.LoadDataFromFile(NewGameObject.ObjectTexturePath, false, NewResource, ThreadedResourceImporter.DataTypes.IMAGE);
                 AssignNewRBToGameObject(NewGameObject, null);
                 NewGameObject.THResource = NewResource;
@@ -39,7 +38,6 @@ namespace Saturn
 
                 foreach (GameObject ChildObject in NewGameObject.Children)
                 {
-                    //ChildObject.ObjectTexture = MaterialTextureImporter.LoadTextureFromFile(ChildObject.ObjectTexturePath);
                     ThreadedResource NewChildResource = new ThreadedResource();
                     NewChildResource.ResourceType = ThreadedResourceImporter.DataTypes.IMAGE;
 
@@ -50,7 +48,6 @@ namespace Saturn
 
                     foreach (GameObject ChildOfChild in ChildObject.Children)
                     {
-                        //ChildOfChild.ObjectTexture = MaterialTextureImporter.LoadTextureFromFile(ChildOfChild.ObjectTexturePath);
                         ThreadedResource NewCoCResource = new ThreadedResource();
                         NewCoCResource.ResourceType = ThreadedResourceImporter.DataTypes.IMAGE;
 

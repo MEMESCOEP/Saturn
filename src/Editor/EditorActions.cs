@@ -43,7 +43,7 @@ namespace Saturn
 
 
         // Loading projects and scenes
-        public static void SelectProjectFromDisk(ref string ProjectName, ref string ConfigPath, ref string ConfigFile, ref string CurrentScenePath, ref List<GameObject> ObjectList, ref List<string> ScenesInProject)
+        public static void SelectProjectFromDisk(ref List<GameObject> ObjectList, ref List<string> ScenesInProject)
         {
             try
             {
@@ -72,12 +72,12 @@ namespace Saturn
                     }
                     
                     Editor.BackgroundOperationProgress = 0.75f;
-                    CurrentScenePath = SceneToOpen;
-                    ConfigPath = Path.GetDirectoryName(DR.Path);
-                    ConfigFile = DR.Path;
-                    ProjectName = ProjectInfo.Split('\n')[1];
+                    Editor.CurrentScene = SceneToOpen;
+                    Editor.ProjectConfigPath = Path.GetDirectoryName(DR.Path);
+                    Editor.ProjectConfigFile = DR.Path;
+                    Editor.ProjectName = ProjectInfo.Split('\n')[1];
                     
-                    ConsoleUtils.StatusWrite($"Project path: \"{ConfigPath}\"", ConsoleUtils.StatusTypes.DEBUG);
+                    ConsoleUtils.StatusWrite($"Project path: \"{Editor.ProjectConfigPath}\"", ConsoleUtils.StatusTypes.DEBUG);
                     ConsoleUtils.StatusWrite($"Scene to open: \"{SceneToOpen}\"", ConsoleUtils.StatusTypes.DEBUG);
                     ConsoleUtils.StatusWrite($"Opening scene \"{DR.Path}\"...", ConsoleUtils.StatusTypes.DEBUG);
 
@@ -103,7 +103,7 @@ namespace Saturn
             }
         }
 
-        public static void SelectSceneFromDisk(string CurrentScenePath, List<GameObject> ObjectList, List<string> ScenesInProject)
+        public static void SelectSceneFromDisk(List<GameObject> ObjectList, List<string> ScenesInProject)
         {
             new Thread(() => {
                 try
@@ -118,7 +118,7 @@ namespace Saturn
                         Editor.BackgroundOperationProgress = 0.25f;
                         ConsoleUtils.StatusWrite($"Opening scene \"{DR.Path}\"...");
                         ObjectList.Clear();
-                        CurrentScenePath = DR.Path;
+                        Editor.CurrentScene = DR.Path;
                         Editor.BackgroundOperationProgress = 0.75f;
 
                         SceneImporter.ImportSceneFile(DR.Path, ref ObjectList);
@@ -211,7 +211,7 @@ namespace Saturn
 
                         if (DR.IsOk)
                         {
-                            CurrentScenePath = DR.Path;
+                            Editor.CurrentScene = DR.Path;
 
                             SceneExporter.SaveSceneToFile(CurrentScenePath, ObjectList);
                             ConsoleUtils.StatusWrite("Scene saved successfully.");
