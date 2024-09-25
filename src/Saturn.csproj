@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Hexa.NET.Raylib">
+      <HintPath>Shared\Libraries\Hexa.NET.Raylib.dll</HintPath>
+    </Reference>
+
     <PackageReference Include="NativeFileDialogSharp" Version="0.5.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="ini-parser" Version="2.5.2" />
@@ -20,7 +24,6 @@
     <PackageReference Include="Hexa.NET.ImGuizmo" Version="2.1.1" />
     <PackageReference Include="Hexa.NET.ImNodes" Version="2.1.1" />
     <PackageReference Include="Hexa.NET.ImPlot" Version="2.1.1" />
-    <PackageReference Include="Hexa.NET.Raylib" Version="1.0.0" />
 
     <Content Include="Editor\Resources\Materials\**\*.*" CopyToOutputDirectory="Always" TargetPath="Resources\Materials\%(Filename)%(Extension)" />
     <Content Include="Editor\Resources\Shaders\**\*.*" CopyToOutputDirectory="Always" TargetPath="Resources\Shaders\%(Filename)%(Extension)" />

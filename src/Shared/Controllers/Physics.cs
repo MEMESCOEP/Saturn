@@ -50,7 +50,7 @@ namespace Saturn
 
                 B2.ShapeId shapeId = B2.CreatePolygonShape(bodyId, &shapeDef, &box);
 
-                return [NewBodyDef, bodyId, shapeId];
+                return new object[] { NewBodyDef, bodyId, shapeId };
             }            
         }
 

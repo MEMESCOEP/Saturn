@@ -123,7 +123,7 @@ namespace Saturn
                 }
                 catch (Exception EX)
                 {
-                    Messagebox.ShowMessage("Saturn - ERROR", $"An error occurred during the build.\n\nDetails:\n  {EX.Message}");
+                    Messagebox.ShowMessage("Saturn - ERROR", $"An error occurred during the build.\n\nDetails:\n  {EX.Message}", SDL2.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR);
                     Editor.BackgroundOperationRunning = false;
                     ProjectFSItemImporter.SkipUpdate = false;
                 }

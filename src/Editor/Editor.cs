@@ -1039,13 +1039,13 @@ namespace Saturn
                         ImGui.Begin("Operation in Progress", ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoMove);
                         ImGui.SetWindowSize(new Vector2(448, 72));
                         ImGui.SetWindowPos(new Vector2((EditorWindowSize.Width / 2f) - (ImGui.GetWindowSize().X / 2f), (EditorWindowSize.Height / 2f) - (ImGui.GetWindowSize().Y / 2f)));
-                        ImGui.TextWrapped($"{BackgroundOperationText} ({string.Format("{0:0.00}", BackgroundOperationProgress * 100f)}%)...");
+                        ImGui.TextWrapped($"{BackgroundOperationText} ({string.Format("{0:0.00}%", BackgroundOperationProgress * 100f)}%)...");
                         ImGui.ProgressBar(BackgroundOperationProgress, new Vector2(ImGui.GetWindowSize().X - 16, 16), "");
                         ImGui.End();
                         Runtime.GUIManager.EndFrame();
                     }
 
-                    // Update delta time / frame time and end ImGui and Raylib drawing
+                    // Update delta time & frame time and end ImGui & Raylib drawing
                     #region End of frame shenanigans
                     Runtime.FrameCount++;
                     Runtime.DeltaTime = Raylib.GetFrameTime();

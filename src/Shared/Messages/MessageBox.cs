@@ -9,7 +9,7 @@ namespace Saturn
     class Messagebox
     {
         /* FUNCTIONS */
-        public static void ShowMessage(string Title, string Message, SDL.SDL_MessageBoxFlags MsgBoxFlags = SDL2.SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_INFORMATION)
+        public static void ShowMessage(string Title, string Message, SDL.SDL_MessageBoxFlags MsgBoxFlags = SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_INFORMATION)
         {
             SDL.SDL_ShowSimpleMessageBox(MsgBoxFlags, Title, Message, 0);
         }

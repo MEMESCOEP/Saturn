@@ -1,5 +1,5 @@
 ## SATURN COMPILATION SCRIPT ##
-# By memescoep, 2024
+# By Andrew Maney, 2024
 # https://github.com/MEMESCOEP/Saturn
 
 
@@ -10,7 +10,6 @@ from rich.panel import Panel
 from datetime import datetime
 import subprocess
 import traceback
-import platform
 import shutil
 import time
 import sys
@@ -28,19 +27,35 @@ CurrentPlatform = "THIS_PLATFORM"
 OutputPath = "./bin/"
 UPXPath = r""
 PlatformOptions = [
+    # Windows
     "win-x86",
     "win-x64",
     "win-arm64",
-    "linux-x64",
+
+    # Linux
     "linux-musl-x64",
-    "linux-musl-arm64",
-    "linux-arm",
-    "linux-arm64",
+    "linux-x64",
     "linux-bionic-arm64",
+    "linux-musl-arm64",
+    "linux-arm64",
+    "linux-arm",
+
+    # MacOS
     "osx-x64",
     "osx-arm64",
-    "freebsd-x64",
+
+    # FreeBSD
     "freebsd-arm64",
+    "freebsd-x64",
+    "freebsd",
+
+    # Mobile (Android & iOS)
+    "android-arm64",
+    "android-arm",
+    "android",
+    "ios-arm64",
+    "ios-arm",
+    "ios",
 ]
 DotnetOptions = [
     "dotnet",
@@ -133,7 +148,7 @@ try:
 
         match Arg:
             case "--verbose":
-                print(f"[INFO] >> verbosity enabled.")
+                print(f"[INFO] >> Verbosity enabled.")
                 DotnetOptions.append('--verbosity')
                 DotnetOptions.append('detailed')
 
@@ -155,10 +170,22 @@ try:
 
                 EnteredPlatform = sys.argv[sys.argv.index(Arg) + 1].replace("'", "").replace("\"", "")
 
+                # Check if the entered platform is in the platform list
                 if any(EnteredPlatform in Platform for Platform in PlatformOptions) == False:
                     raise KeyError(f"The platform \"{EnteredPlatform}\" is not valid. See help for available options.")
 
-                print(f"[INFO] >> The binary will be compiled targeting the \"{CurrentPlatform}\" platform.")
+                print(f"[INFO] >> The binary will be compiled targeting the \"{EnteredPlatform}\" platform.")
+
+                # Check if the curretn platform must use the app host
+                if EnteredPlatform.startswith("android"):
+                    print(f"[INFO] >> Compilation targeting the \"{EnteredPlatform}\" platform must use the application host, so this will be configured.")
+                    DotnetOptions.append("-p:UseAppHost=true")
+                    DotnetOptions.append("-p:PublishSingleFile=false")
+
+                # Check if the target platform is not widely supported
+                if EnteredPlatform.startswith("win") == False and EnteredPlatform.startswith("linux") == False and EnteredPlatform.startswith("osx") == False:
+                    print(f"[WARN] >> Compilation targeting the \"{EnteredPlatform}\" platform may not be available, so you might need to recompile the Dotnet SDK yourself. See https://github.com/dotnet/runtime/issues/31180 for more information.")
+
                 SkipArgument = True
                 CurrentPlatform = EnteredPlatform
 
@@ -213,8 +240,18 @@ try:
         print(f"[INFO] >> Waiting for 3 seconds for filesystem to finish updating...")
         time.sleep(3)
         print("[INFO] >> Removing temporary directories and files...")
-        shutil.rmtree(f"{OutputPath}Debug")
-        shutil.rmtree(f"{OutputPath}Release")
+
+        if (os.path.exists(f"{OutputPath}Debug")):
+            shutil.rmtree(f"{OutputPath}Debug")
+
+        else:
+            print(f"[INFO] >> The directory \"{OutputPath}Debug\" doesn't exist.")
+
+        if (os.path.exists(f"{OutputPath}Release")):
+            shutil.rmtree(f"{OutputPath}Release")
+
+        else:
+            print(f"[INFO] >> The directory \"{OutputPath}Release\" doesn't exist.")
 
     print("\n\n")
 

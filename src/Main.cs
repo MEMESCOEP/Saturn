@@ -15,7 +15,7 @@ namespace Saturn
         // Public
         public static List<GameObject> ObjectsInScene = new List<GameObject>();
         public static List<Action> ExtraDrawCalls = new List<Action>();
-        public static string EngineVersion = "0.106P"; // <Major revision>.<month# + day# + year# + hour(24-hr) + min><Release type (P = prototype, A = alpha, B = beta, RC = release candidate, SR = stable release)>
+        public static string EngineVersion = "0.2057P"; // <Major revision>.<month# + day# + year#><Release type (P = prototype, A = alpha, B = beta, RC = release candidate, SR = stable release)>
         public static bool WindowOpened = false;
         public static bool Debug = false;
 

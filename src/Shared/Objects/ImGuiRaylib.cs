@@ -3,7 +3,7 @@ using Hexa.NET.ImGui;
 using Hexa.NET.Raylib;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using ImDrawIdx = ushort;
+//using ImDrawIdx = ushort;
 
 
 /* NAMESPACES */
@@ -180,7 +180,7 @@ namespace Saturn
             Raylib.RlVertex2F(idx_vert.Pos.X, idx_vert.Pos.Y);
         }
 
-        private static void ImGuiRenderTriangles(uint count, uint indexStart, ImVector<ImDrawIdx>* indexBuffer, ImVector<ImDrawVert>* vertBuffer, void* texturePtr)
+        private static void ImGuiRenderTriangles(uint count, uint indexStart, ImVector<ushort>* indexBuffer, ImVector<ImDrawVert>* vertBuffer, void* texturePtr)
         {
             if (count < 3)
                 return;
@@ -194,9 +194,9 @@ namespace Saturn
 
             for (uint i = 0; i <= (count - 3); i += 3)
             {
-                ImDrawIdx indexA = indexBuffer->Data[indexStart + i];
-                ImDrawIdx indexB = indexBuffer->Data[indexStart + i + 1];
-                ImDrawIdx indexC = indexBuffer->Data[indexStart + i + 2];
+                ushort indexA = indexBuffer->Data[indexStart + i];
+                ushort indexB = indexBuffer->Data[indexStart + i + 1];
+                ushort indexC = indexBuffer->Data[indexStart + i + 2];
 
                 ImDrawVert vertexA = vertBuffer->Data[indexA];
                 ImDrawVert vertexB = vertBuffer->Data[indexB];

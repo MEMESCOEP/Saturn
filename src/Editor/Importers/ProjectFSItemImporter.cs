@@ -59,7 +59,7 @@ namespace Saturn
                     NoButton.text = "No";
 
                     MessageBoxData.numbuttons = 2;
-                    MessageBoxData.buttons = [YesButton, NoButton];
+                    MessageBoxData.buttons = new SDL_MessageBoxButtonData[] { YesButton, NoButton };
                     MessageBoxData.message = @$"{EX.Message}
 (See https://github.com/dotnet/aspnetcore/issues/3475?WT.mc_id=-blog-scottha?WT.mc_id=-blog-scottha for more information)
 
