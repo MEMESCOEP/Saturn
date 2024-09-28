@@ -27,6 +27,8 @@ namespace Saturn
         // Don't call manually unless absolutely required
         public static void InitGraphics(Size WindowSize, Size MinimumWindowSize, ConfigFlags WindowFlags, string WindowTitle = "New Window")
         {
+            ConsoleUtils.StatusWrite("Initializing graphics...");
+
             // Set the window flags
             ConsoleUtils.StatusWrite("Setting window flags...", ConsoleUtils.StatusTypes.DEBUG);
             Raylib.SetConfigFlags((uint)WindowFlags);
@@ -37,7 +39,7 @@ namespace Saturn
             Raylib.SetWindowMinSize(MinimumWindowSize.Width, MinimumWindowSize.Height);
 
             // Set window icon based on OS (and arch if the OS is Linux)
-            ConsoleUtils.StatusWrite("Detecting current OS and arch...", ConsoleUtils.StatusTypes.DEBUG);
+            ConsoleUtils.StatusWrite("Detecting current OS and architecture...", ConsoleUtils.StatusTypes.DEBUG);
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -70,11 +72,11 @@ namespace Saturn
             else
             {
                 ConsoleUtils.StatusWrite("The OS is not Windows, Linux, MacOS, or FreeBSD. This may cause issues.", ConsoleUtils.StatusTypes.WARNING);
-                Raylib.SetWindowIcon(MaterialTextureImporter.LoadImageFromFile("Resources/Icons/AppIconBSD.png"));
+                Raylib.SetWindowIcon(MaterialTextureImporter.LoadImageFromFile("Resources/Icons/Unknown.png"));
             }
 
             // Load a splash image
-            Texture SplashImage = MaterialTextureImporter.LoadTextureFromFile("Resources/Icons/Splash.png");
+            Texture SplashImage = MaterialTextureImporter.LoadTextureFromFile("Resources/Images/Splash.png");
 
             // Draw the splash screen
             for (int i = 1; i < 32; i++)
@@ -89,6 +91,8 @@ namespace Saturn
 
         public static void Init(Size WindowSize, string GameName, bool InitializeGraphics = true)
         {
+            ConsoleUtils.StatusWrite("Initializing runtime...");
+
             if (InitializeGraphics == true)
             {
                 InitGraphics(WindowSize, DefaultMinimumWindowSize, DefaultConfigFlags, GameName);

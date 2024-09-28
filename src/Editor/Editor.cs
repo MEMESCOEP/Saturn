@@ -135,7 +135,7 @@ namespace Saturn
                 UpDirIcon = Icons.Where(i => i.IconName == "DirectoryUp").FirstOrDefault();
                 
                 // Initialize the runtime
-                Runtime.Init(EditorWindowSize, "New Window", false);
+                Runtime.Init(EditorWindowSize, "Saturn", false);
 
                 ViewportRenderTexture = Raylib.LoadRenderTexture(1, 1);
                 UpdateWindowProperties();
@@ -234,7 +234,7 @@ namespace Saturn
                         #region Draw selected object utility controls
                         if (SelectedObject != null)
                         {
-
+                            //ViewportUtils.DrawUtilityControls(SelectedObject);
                         }
                         #endregion
 

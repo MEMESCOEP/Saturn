@@ -134,6 +134,14 @@ Are you ABSOLUTELY SURE you want to continue?";
 
                     switch (Path.GetExtension(FoundFile))
                     {
+                        case ".csproj":
+                            NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "CSProject").FirstOrDefault();
+                            break;
+
+                        case ".sln":
+                            NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "Solution").FirstOrDefault();
+                            break;
+
                         case ".cs":
                             NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "CodeFile").FirstOrDefault();
                             break;
@@ -148,7 +156,9 @@ Are you ABSOLUTELY SURE you want to continue?";
                             NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "Model").FirstOrDefault();
                             break;
 
+                        case ".conf":
                         case ".cfg":
+                        case ".ini":
                             NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "ConfigFile").FirstOrDefault();
                             break;
 
@@ -184,6 +194,7 @@ Are you ABSOLUTELY SURE you want to continue?";
                             break;
 
                         case ".dll":
+                        case ".so":
                             NewFile.AssociatedIcon = Icons.Where(i => i.IconName == "Library").FirstOrDefault();
                             break;
 

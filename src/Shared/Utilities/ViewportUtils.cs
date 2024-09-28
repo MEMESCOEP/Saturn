@@ -37,16 +37,5 @@ namespace Saturn
             Camera.Rotation = 0f;
             Camera.Zoom = 1f;
         }
-
-        public static void DrawUtilityControls(GameObject SelectedObject)
-        {
-            if (SelectedObject == null)
-            {
-                return;
-            }
-
-            Raylib.DrawLine((int)SelectedObject.ObjectRigidbody.position.x, (int)SelectedObject.ObjectRigidbody.position.y, (int)(SelectedObject.ObjectRigidbody.position.x + (32f * Camera.Zoom)), (int)SelectedObject.ObjectRigidbody.position.y, Raylib.Red);
-            Raylib.DrawLine((int)SelectedObject.ObjectRigidbody.position.x, (int)SelectedObject.ObjectRigidbody.position.y, (int)SelectedObject.ObjectRigidbody.position.x, (int)(SelectedObject.ObjectRigidbody.position.y + (32f * Camera.Zoom)), Raylib.Green);
-        }
     }
 }

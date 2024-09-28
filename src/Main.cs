@@ -63,7 +63,6 @@ namespace Saturn
                 ConsoleUtils.StatusWrite($"Raylib version: {Raylib.RAYLIB_VERSION}", ConsoleUtils.StatusTypes.DEBUG);
                 ConsoleUtils.StatusWrite($"SDL Version: {SDL2.SDL.SDL_MAJOR_VERSION}.{SDL2.SDL.SDL_MINOR_VERSION}.{SDL2.SDL.SDL_PATCHLEVEL}", ConsoleUtils.StatusTypes.DEBUG);
                 ConsoleUtils.StatusWrite($"Video driver: {SDL2.SDL.SDL_GetVideoDriver(0)}", ConsoleUtils.StatusTypes.DEBUG);
-                ConsoleUtils.StatusWrite($"H: {GLInfo.name}", ConsoleUtils.StatusTypes.DEBUG);
                 ConsoleUtils.StatusWrite($"RLGL version: {Raylib.RLGL_VERSION}", ConsoleUtils.StatusTypes.DEBUG);
                 Raylib.SetTraceLogLevel(Debug == true ? (int)TraceLogLevel.All : (int)TraceLogLevel.None);
 

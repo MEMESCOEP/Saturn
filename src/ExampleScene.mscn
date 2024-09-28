@@ -1,5 +1,0 @@
-[GAMEOBJECTS]
-{"Children":[{"Children":[],"SerializedRigidbodyPosition":{"X":32.0,"Y":-128.0},"Scale":{"X":1.0,"Y":1.0},"ObjectRigidbodyID":{"index1":2,"world0":0,"revision":1},"SerializedRigidbodyRotation":{"c":1.0,"s":0.0},"ObjectTexturePath":"/home/andrew/Downloads/pixelart-icons-main/png/raspberrypi32.png","ObjectName":"Berry","IsVisible":true,"IsStatic":false},{"Children":[],"SerializedRigidbodyPosition":{"X":-32.0,"Y":-128.0},"Scale":{"X":1.0,"Y":1.0},"ObjectRigidbodyID":{"index1":3,"world0":0,"revision":1},"SerializedRigidbodyRotation":{"c":1.0,"s":0.0},"ObjectTexturePath":"/media/andrew/1D8E170E787C927A/Programming/C#/SaturnGameEngine/Editor/Resources/Icons/AppIconLinux86_64.png","ObjectName":"Tux","IsVisible":true,"IsStatic":false}],"SerializedRigidbodyPosition":{"X":0.0,"Y":0.0},"Scale":{"X":10.0,"Y":1.0},"ObjectRigidbodyID":{"index1":1,"world0":0,"revision":1},"SerializedRigidbodyRotation":{"c":0.9659258,"s":0.25881904},"ObjectTexturePath":"/home/andrew/Downloads/Grass/Grass01.png","ObjectName":"Ground","IsVisible":true,"IsStatic":true}
-[END_GAMEOBJECTS]
-sVisible":true,"IsStatic":true}
-[END_GAMEOBJECTS]
